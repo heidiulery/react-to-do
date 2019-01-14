@@ -33,6 +33,12 @@ class App extends Component {
     this.setState({ newTodoDescription: e.target.value })
   }
 
+  handleDelete(index) {
+    const todos = this.state.todos.slice();
+    todos.splice(index, 1);
+    this.setState({ todos: todos });
+  }
+
   render() {
     return (
       <div className="App">
@@ -43,6 +49,7 @@ class App extends Component {
               description={ todo.description }
               isCompleted={ todo.isCompleted }
               toggleComplete={ () => this.toggleComplete(index) }
+              handleDelete={ () => this.handleDelete(index) }
             />
           )}
         </ul>
